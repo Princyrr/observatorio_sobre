@@ -1,0 +1,263 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: "Inter", system-ui, sans-serif;
+    @apply text-gray-800 bg-white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-secondary rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-secondary-dark;
+  }
+}
+
+@layer utilities {
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .bg-200 {
+    background-size: 200% 200%;
+  }
+}
+
+@layer components {
+  .section-transition {
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease;
+  }
+}
+
+@keyframes marqueeInfinite {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeInfinite 15s linear infinite;
+  will-change: transform;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1924px) and (orientation: landscape) {
+  .hero-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4rem;
+  }
+}
+
+@keyframes logo3d {
+  0% {
+    transform: scale(0.95) rotateY(-8deg);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.05) rotateY(8deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1) rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+.animate-logo-3d {
+  animation: logo3d 1.5s ease-in-out;
+}
+
+@keyframes lightBeam {
+  0% {
+    transform: translateX(-500px) rotate(45deg);
+  }
+
+  100% {
+    transform: translateX(900px) rotate(45deg);
+  }
+}
+
+.animate-light-beam {
+  animation: lightBeam 8s infinite linear;
+}
+
+@keyframes wave {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+.animate-wave {
+  animation: wave 5s infinite;
+}
+
+.animate-wave-delay {
+  animation: wave 5s infinite;
+  animation-delay: 2s;
+}
+
+@keyframes particle {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-80px);
+    opacity: 0;
+  }
+}
+
+.animate-particle {
+  animation: particle 5s infinite ease-in-out;
+}
+
+@keyframes logo3d {
+  0% {
+    opacity: 0;
+    transform: scale(0.85) rotateY(-25deg);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05) rotateY(10deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotateY(0deg);
+  }
+}
+
+.animate-logo-3d {
+  animation: logo3d 1.8s ease;
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 40s linear infinite;
+}
+.floating-panel {
+  position: absolute;
+
+  left: -450px;
+
+  width: 360px;
+  height: 250px;
+
+  border-radius: 30px;
+
+  overflow: hidden;
+
+  backdrop-filter: blur(20px);
+
+  background: rgba(255, 255, 255, 0.04);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow: 0 0 80px rgba(0, 170, 255, 0.15);
+
+  animation: flyPanel linear infinite;
+
+  transform-style: preserve-3d;
+}
+
+.panel-glow {
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(80, 180, 255, 0.18),
+    transparent 70%
+  );
+}
+
+@keyframes flyPanel {
+  0% {
+    transform: translateX(0) translateY(0) rotateY(-55deg) rotateX(10deg)
+      scale(0.7);
+
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.25;
+  }
+
+  50% {
+    transform: translateX(calc(50vw)) translateY(-30px) rotateY(0deg)
+      rotateX(0deg) scale(1);
+
+    opacity: 0.18;
+  }
+
+  100% {
+    transform: translateX(calc(100vw + 800px)) translateY(20px) rotateY(55deg)
+      rotateX(-8deg) scale(0.8);
+
+    opacity: 0;
+  }
+}
