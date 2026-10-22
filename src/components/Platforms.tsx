@@ -152,7 +152,7 @@ function Section({
 }: {
   title: string;
   subtitle: string;
-  data: any[];
+  data: (typeof fiepbPlatforms)[number][];
 }) {
   return (
     <div className="mb-24">

@@ -7,10 +7,11 @@ interface ScreenSaverProps {
   onClose: () => void;
 }
 
+const logos = [logoAzul, logoSistema];
+
 export default function ScreenSaver({ onClose }: ScreenSaverProps) {
   const [currentLogo, setCurrentLogo] = useState(0);
 
-  const logos = [logoAzul, logoSistema];
 
   useEffect(() => {
     const interval = setInterval(() => {
