@@ -1,13 +1,15 @@
 import { useState } from "react";
 import ScreenSaver from "./ScreenSaver";
 import {
-  Factory,
   TrendingUp,
   BarChart3,
   ChevronDown,
   Monitor,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
-import iconLogo from "../assets/iconlogo.png";
+import HeroVisual from "./HeroVisual";
+import RobotScene from "./RobotScene";
 
 interface HeroProps {
   onNavigate: (section: string) => void;
@@ -15,11 +17,38 @@ interface HeroProps {
 
 export default function Hero({ onNavigate }: HeroProps) {
   const [showScreenSaver, setShowScreenSaver] = useState(false);
+  const [showRobot, setShowRobot] = useState(true);
+
+  const toggleVisual = () => {
+    setShowRobot((prev) => !prev);
+  };
+
+  {
+    /* useEffect(() => {
+    const interval = setInterval(() => {
+      setShowRobot((prev) => !prev);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []); */
+  }
 
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-primary via-primary-dark to-primary"
+      className="
+  min-h-fit
+  md:min-h-screen
+  flex
+  items-center
+  justify-center
+  relative
+  overflow-hidden
+  bg-gradient-to-br
+  from-primary
+  via-primary-dark
+  to-primary
+"
     >
       {/* BOTÃO */}
       <div className="absolute top-6 right-6 z-50">
@@ -79,17 +108,10 @@ export default function Hero({ onNavigate }: HeroProps) {
         />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="hero-grid gap-12 items-center">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="flex flex-col items-center mb-4">
           {/* Text Content */}
-          <div className="flex flex-col items-center text-center">
-            <div className="inline-flex items-center gap-2 bg-secondary/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6 animate-fade-in mt-10">
-              <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
-              <span className="text-secondary-light text-sm font-medium">
-                Observatório da Indústria da FIEPB
-              </span>
-            </div>
-
+          <div className="flex flex-col items-center text-center mt-14">
             <h1 className="text-5xl lg:text-5xl font-bold text-white mb-6 animate-fade-in-up">
               Inteligência de dados para decisões
               <span className="block mt-2 bg-gradient-to-r from-secondary to-secondary-light bg-clip-text text-transparent">
@@ -107,7 +129,7 @@ export default function Hero({ onNavigate }: HeroProps) {
             </p>
 
             <div
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up mb-14"
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up"
               style={{ animationDelay: "300ms" }}
             >
               <button
@@ -132,123 +154,90 @@ export default function Hero({ onNavigate }: HeroProps) {
               </button>
             </div>
           </div>
-
-          {/* Visual Element */}
-          <div
-            className="flex justify-center animate-fade-in-right order-2 lg:order-none mb-24"
-            style={{ animationDelay: "300ms" }}
-          >
-            <div className="relative">
-              {/* Central Circle */}
-
-              <div
-                className="
-    w-[320px]
-    h-[320px]
-    md:w-[420px]
-    md:h-[420px]
-    lg:w-[500px]
-    lg:h-[500px]
-    xl:w-[620px]
-    xl:h-[620px]
-    rounded-full
-    bg-gradient-to-br
-    from-secondary/30
-    to-secondary/10
-    flex
-    items-center
-    justify-center
-    backdrop-blur-sm
-    border
-    border-white/10
-    animate-scale-in
-"
-              >
-                <div
-                  className="
-    w-[230px]
-    h-[230px]
-    md:w-[310px]
-    md:h-[310px]
-    lg:w-[380px]
-    lg:h-[380px]
-    xl:w-[460px]
-    xl:h-[460px]
-    rounded-full
-    bg-gradient-to-br
-    from-blue-200
-    to-blue-300
-    flex
-    items-center
-    justify-center
-    shadow-2xl
-    shadow-secondary/30
-    animate-float
-    p-6
-    md:p-8
-    xl:p-10
-"
-                >
-                  <img
-                    src={iconLogo}
-                    alt="Observatório da Indústria FIEPB"
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-              </div>
-
-              <div
-                className="absolute -top-4 -right-4 bg-white/10 backdrop-blur-md rounded-xl p-4 shadow-lg animate-float border border-white/20"
-                style={{ animationDelay: "0.5s" }}
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center">
-                    <BarChart3 className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-white font-semibold">Painéis</p>
-                    <p className="text-white/60 text-xs">
-                      Indicadores estratégicos
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div
-                className="absolute -bottom-4 -left-4 bg-white/10 backdrop-blur-md rounded-xl p-4 shadow-lg animate-float border border-white/20"
-                style={{ animationDelay: "1s" }}
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary-light flex items-center justify-center">
-                    <TrendingUp className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-white font-semibold">Estudos</p>
-                    <p className="text-white/60 text-xs">Análises setoriais</p>
-                  </div>
-                </div>
-              </div>
-
-              <div
-                className="absolute top-1/2 -right-8 transform -translate-y-1/2 bg-white/10 backdrop-blur-md rounded-xl p-4 shadow-lg animate-float border border-white/20"
-                style={{ animationDelay: "1.5s" }}
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-secondary-light flex items-center justify-center">
-                    <Factory className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-white font-semibold">Dados</p>
-                    <p className="text-white/60 text-xs">
-                      Inteligência para decisões
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
+        <div
+          className="
+    relative
+    group
+    w-full
+    h-[320px]
+    sm:h-[420px]
+    md:h-[520px]
+    lg:h-[650px]
+    xl:h-[750px]
+    flex
+    items-center
+    justify-center
+  "
+        >
+          {/* Seta esquerda */}
+          <button
+            onClick={toggleVisual}
+            className="
+  absolute
+  left-2
+  md:left-6
+  z-20
+  w-10
+  h-10
+  rounded-full
+  bg-white/10
+  backdrop-blur-md
+  border
+  border-white/10
+  flex
+  items-center
+  justify-center
 
+  opacity-0
+  group-hover:opacity-100
+
+  transition-all
+  duration-300
+
+  text-white/60
+  hover:text-white
+  hover:bg-white/20
+"
+          >
+            <ChevronLeft size={22} />
+          </button>
+
+          {showRobot ? <RobotScene /> : <HeroVisual />}
+
+          {/* Seta direita */}
+          <button
+            onClick={toggleVisual}
+            className="
+  absolute
+  right-2
+  md:right-6
+  z-20
+  w-10
+  h-10
+  rounded-full
+  bg-white/10
+  backdrop-blur-md
+  border
+  border-white/10
+  flex
+  items-center
+  justify-center
+
+  opacity-0
+  group-hover:opacity-100
+
+  transition-all
+  duration-300
+
+  text-white/60
+  hover:text-white
+  hover:bg-white/20
+"
+          >
+            <ChevronRight size={22} />
+          </button>
+        </div>
         {/* Scroll Indicator */}
         <div className="absolute bottom-[-2px] left-1/2 transform -translate-x-1/2 animate-bounce">
           <button
