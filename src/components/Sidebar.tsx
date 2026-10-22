@@ -104,13 +104,14 @@ export default function Sidebar({
         <button
           onClick={() => setCollapsed(!collapsed)}
           className="
-            absolute -right-4 top-10 z-50
-            w-9 h-9 rounded-full
-            bg-secondary text-white
-            flex items-center justify-center
-            shadow-xl border border-white/20
-            hover:scale-110 transition-all duration-300
-          "
+    hidden lg:flex
+    absolute -right-4 top-10 z-50
+    w-9 h-9 rounded-full
+    bg-secondary text-white
+    items-center justify-center
+    shadow-xl border border-white/20
+    hover:scale-110 transition-all duration-300
+  "
         >
           {collapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
         </button>
